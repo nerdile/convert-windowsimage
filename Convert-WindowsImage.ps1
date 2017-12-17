@@ -4198,7 +4198,7 @@ format fs=fat32 label="System"
         
                     if ( $VHDPartitionStyle -eq "MBR") {
                         $partition       | Add-PartitionAccessPath -AssignDriveLetter
-                        $drive           = $(Get-Partition -Disk $disk).AccessPaths[0]
+                        $drive           = $(Get-Partition -Disk $disk)[0].AccessPaths[0]
                         Write-W2VInfo "Access path ($drive) has been assigned..."
                     } elseif ( $VHDPartitionStyle -eq "GPT" ) {
 
@@ -4209,11 +4209,11 @@ format fs=fat32 label="System"
                         {
 
                             $partitionSystem | Add-PartitionAccessPath -AssignDriveLetter
-                            $driveSystem     = $(Get-Partition -Disk $disk).AccessPaths[1]
+                            $driveSystem     = $(Get-Partition -Disk $disk)[1].AccessPaths[0]
                             Write-W2VInfo "Access path ($driveSystem) has been assigned to the System Volume..."
 
                             $partition       | Add-PartitionAccessPath -AssignDriveLetter
-                            $drive           = $(Get-Partition -Disk $disk).AccessPaths[2]
+                            $drive           = $(Get-Partition -Disk $disk)[2].AccessPaths[0]
                             Write-W2VInfo "Access path ($drive) has been assigned to the Boot Volume..."
                         }
                         ElseIf
@@ -4222,7 +4222,7 @@ format fs=fat32 label="System"
                         )
                         {
                             $partition       | Add-PartitionAccessPath -AssignDriveLetter
-                            $drive           = $(Get-Partition -Disk $disk).AccessPaths[1]
+                            $drive           = $(Get-Partition -Disk $disk)[1].AccessPaths[0]
                             Write-W2VInfo "Access path ($drive) has been assigned to the Boot Volume..."
                         }
                     }
