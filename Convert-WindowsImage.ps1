@@ -1,8 +1,4 @@
-﻿Function
-Convert-WindowsImage
-{
-
-  <#
+﻿  <#
     .NOTES
         Copyright (c) Microsoft Corporation.  All rights reserved.
 
@@ -4562,4 +4558,4 @@ format fs=fat32 label="System"
 
    #endregion Code
 
-}
+
